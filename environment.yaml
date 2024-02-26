@@ -1,0 +1,8 @@
+name: cats_and_dogs_hai
+
+channels:
+  - default
+  - conda-forge
+
+dependencies:
+  - python=3.11
