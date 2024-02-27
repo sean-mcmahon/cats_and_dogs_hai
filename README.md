@@ -11,5 +11,5 @@ conda env create -f environment.yaml
 conda activate cats_and_dogs_hai
 poetry install
 
-To set up kernel for Jupyter-Lab 
+To set up kernEl for Jupyter-Lab 
 python -m ipykernel install --user --name cats_and_dogs_hai
