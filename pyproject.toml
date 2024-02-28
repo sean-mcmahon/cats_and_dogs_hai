@@ -4,6 +4,10 @@ version = "0.1.0"
 description = "Code base for classifying dog and cat breeds, and for pixel-wise segmentation for pet (cat or dog) versus no pet."
 authors = ["Sean McMahon <sean3.mcmahon@gmail.com>"]
 readme = "README.md"
+packages = [{include = "cats_and_dogs_hai"}] 
+
+[tool.mypy]
+ignore_missing_imports = true
 
 [tool.poetry.dependencies]
 python = "^3.11"
