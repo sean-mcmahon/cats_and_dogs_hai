@@ -13,10 +13,13 @@ from cats_and_dogs_hai.labels import pet_breeds_to_id
 
 class PetBreedsDataset(Dataset):
     def __init__(
-        self, images_directory: Path, dataset_info_file: Path, transforms: Optional[v2.Compose] = None
+        self, images_directory: Path, dataset_info_file: Path,
+        number_of_classes:Optional[int]=None,
+        transforms: Optional[v2.Compose] = None
     ):
         self.images_directory = images_directory
         self.dataset_df = pd.read_csv(dataset_info_file)
+        self.number_of_classes = len(pet_breeds_to_id) if number_of_classes is None else number_of_classes
         self.transforms = transforms
 
     def __len__(self):
@@ -32,4 +35,13 @@ class PetBreedsDataset(Dataset):
         if self.transforms is not None:
             image = self.transforms(image)
 
-        return image, torch.tensor(breed_ids)
+        sudo_onehot_labels = self.sudo_one_hot_encode(torch.tensor(breed_ids))
+
+        return image, sudo_onehot_labels
+
+
+    def sudo_one_hot_encode(self, labels:torch.tensor) -> torch.tensor:
+        # pylint: disable=not-callable
+        one_hot =  torch.nn.functional.one_hot(labels, num_classes=self.number_of_classes)
+        multi_label_one_hot = one_hot.sum(dim=0).float()
+        return multi_label_one_hot
