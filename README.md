@@ -1,5 +1,10 @@
 
 
+## Remaining work
+
+Incorporate performance metrics into training and validation steps
+
+
 
 ## Installation and Setup
 
@@ -18,7 +23,17 @@ To set up kernel for Jupyter-Lab
 python -m ipykernel install --user --name cats_and_dogs_hai
 ```
 
-## DataExploration Notebook
+## Dataset
+
+Download cat_and_dogs.zip into repository root
+```
+cd <repository root>
+mkdir -p data/cats_and_dogs && cd data/cats_and_dogs
+curl -LO https://github.com/harrison-ai/hai-tech-tasks/releases/download/v0.1/cats_and_dogs.zip .
+unzip cats_and_dogs.zip -d .
+```
+
+## Data Exploration Notebook
 ```
 conda activate cats_and_dogs_hai
 jupyter-lab notebooks/DataExplore.ipynb
@@ -35,3 +50,4 @@ To run a simple training loop (excluded pytest to get full stdout and reduce tes
 ```
 python tests/training/debug_train.py
 ```
+

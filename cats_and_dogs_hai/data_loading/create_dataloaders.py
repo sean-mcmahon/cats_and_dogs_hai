@@ -22,6 +22,9 @@ def create_dataloaders(debug: bool = False) -> TrainingDataLoaders:
     if debug:
         train_fn = dataset_info_filename.parent / "tiny_train.csv"
         val_fn = dataset_info_filename.parent / "tiny_validation.csv"
+        if not train_fn.is_file() or not val_fn.is_file():
+            splitter = CreateDataSplits(dataset_info_filename, dataset_info_filename.parent)
+            splitter.create_tiny_db(10)
     else:
         save_dir = Path("data/cats_and_dogs/train_val_splits")
         save_dir.mkdir(exist_ok=True)

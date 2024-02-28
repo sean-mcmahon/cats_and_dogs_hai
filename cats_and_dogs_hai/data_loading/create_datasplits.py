@@ -1,3 +1,4 @@
+from typing import Tuple
 from pathlib import Path
 
 import pandas as pd
@@ -8,7 +9,7 @@ class CreateDataSplits():
         self.full_data_df = pd.read_csv(data_info_csv)
         self.save_dir = save_directory
 
-    def __call__(self, trainset_percentage:float=0.8) -> (str, str):
+    def __call__(self, trainset_percentage:float=0.8) -> Tuple[Path, Path]:
         self.__create_df_splits(self.full_data_df, trainset_percentage)
 
         val_fn = self.save_dir / "validation.csv"

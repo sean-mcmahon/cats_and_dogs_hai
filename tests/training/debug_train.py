@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from cats_and_dogs_hai.training.create_trainer import run_train
+from cats_and_dogs_hai.training.run_train import run_train
 
 def main():
     sdir= Path("debug_runs")
