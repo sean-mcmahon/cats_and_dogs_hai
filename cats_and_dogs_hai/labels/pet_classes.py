@@ -16,8 +16,8 @@ class SpeciesIds(IntEnum):
     Dog = 1
 
 
-breed_to_species_id = {}
+pet_breed_to_species_id = {}
 for catbreed in cat_breed_names:
-    breed_to_species_id[catbreed] = SpeciesIds.Cat
+    pet_breed_to_species_id[catbreed] = SpeciesIds.Cat
 for dogbreed in dog_breed_names:
-    breed_to_species_id[dogbreed] = SpeciesIds.Dog
+    pet_breed_to_species_id[dogbreed] = SpeciesIds.Dog

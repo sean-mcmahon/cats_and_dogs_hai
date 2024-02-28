@@ -3,7 +3,7 @@ import numpy as np
 from cats_and_dogs_hai.labels import cat_breed_names
 from cats_and_dogs_hai.labels import dog_breed_names
 from cats_and_dogs_hai.labels import pet_breeds_to_id
-from cats_and_dogs_hai.labels import breed_to_species_id
+from cats_and_dogs_hai.labels import pet_breed_to_species_id
 from cats_and_dogs_hai.labels import SpeciesIds
 
 
@@ -20,12 +20,12 @@ def test_breed_label_ids_valid():
 
 def test_breed_to_species_length():
     total_number_classes = len(cat_breed_names) + len(dog_breed_names)
-    assert total_number_classes == len(breed_to_species_id)
+    assert total_number_classes == len(pet_breed_to_species_id)
 
 def test_breed_to_species_has_all_cats():
     for catbreed in cat_breed_names:
-        assert breed_to_species_id[catbreed] == SpeciesIds.Cat
+        assert pet_breed_to_species_id[catbreed] == SpeciesIds.Cat
 
 def test_breed_to_species_has_all_dogs():
     for dogbreed in dog_breed_names:
-        assert breed_to_species_id[dogbreed] == SpeciesIds.Dog
+        assert pet_breed_to_species_id[dogbreed] == SpeciesIds.Dog

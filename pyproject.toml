@@ -9,6 +9,9 @@ packages = [{include = "cats_and_dogs_hai"}]
 [tool.mypy]
 ignore_missing_imports = true
 
+[tool.black]
+line-length = 90
+
 [tool.poetry.dependencies]
 python = "^3.11"
 numpy = "^1.26.4"
