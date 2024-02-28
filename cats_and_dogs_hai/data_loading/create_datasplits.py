@@ -8,10 +8,14 @@ class CreateDataSplits():
         self.full_data_df = pd.read_csv(data_info_csv)
         self.save_dir = save_directory
 
-    def __call__(self, trainset_percentage:float=0.8):
+    def __call__(self, trainset_percentage:float=0.8) -> (str, str):
         self.__create_df_splits(self.full_data_df, trainset_percentage)
-        self.train_df.to_csv(self.save_dir / "train.csv", index=False)
-        self.val_df.to_csv(self.save_dir / "validation.csv", index=False)
+
+        val_fn = self.save_dir / "validation.csv"
+        train_fn = self.save_dir / "train.csv"
+        self.train_df.to_csv(train_fn, index=False)
+        self.val_df.to_csv(val_fn, index=False)
+        return train_fn, val_fn
 
     def __create_df_splits(self, df:pd.DataFrame, trainset_percentage:float):
         self.train_df = df.sample(frac=trainset_percentage)

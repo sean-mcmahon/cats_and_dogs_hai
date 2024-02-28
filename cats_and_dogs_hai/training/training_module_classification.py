@@ -5,15 +5,15 @@ import torchvision
 
 class ResnetModule(L.LightningModule):
 
-    def __init__(self, number_classes:int):
+    def __init__(self, number_classes:int, learning_rate:float=1e-3):
+        self.learning_rate = learning_rate
         super().__init__()
-
         self.model = torchvision.models.resnet18(num_classes=number_classes)
         self.criterion = torch.nn.BCEWithLogitsLoss()
 
     
     def configure_optimizers(self):
-        optimiser = torch.optim.Adam(self.parameters(), lr=1e-3)
+        optimiser = torch.optim.Adam(self.parameters(), lr=self.learning_rate)
         return optimiser
 
 
