@@ -8,6 +8,7 @@ from torch.utils.data import DataLoader
 from cats_and_dogs_hai.labels import pet_breeds_to_id
 from cats_and_dogs_hai.data_loading.create_datasplits import CreateDataSplits
 from cats_and_dogs_hai.data_loading.data_transforms import image_classification_transforms
+from cats_and_dogs_hai.data_loading.data_transforms import resnet_preprocessing_transforms
 from cats_and_dogs_hai.data_loading import create_classification_dataloader
 from cats_and_dogs_hai.data_paths import dataset_info_filename
 from cats_and_dogs_hai.training.training_module_classification import ResnetModule
@@ -38,5 +39,5 @@ def create_dataloaders(debug: bool = False) -> tuple[DataLoader, DataLoader]:
     train_dl = create_classification_dataloader(
         1, train_fn, transforms=image_classification_transforms
     )
-    val_dl = create_classification_dataloader(1, val_fn, transforms=None)
+    val_dl = create_classification_dataloader(1, val_fn, transforms=resnet_preprocessing_transforms)
     return train_dl, val_dl
