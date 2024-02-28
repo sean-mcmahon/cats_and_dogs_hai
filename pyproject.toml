@@ -24,6 +24,7 @@ lightning = "^2.2.0.post0"
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.2"
 jupyterlab = "^4.1.2"
+tensorboard = "^2.16.2"
 
 [build-system]
 requires = ["poetry-core"]
