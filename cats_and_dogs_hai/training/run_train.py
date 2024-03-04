@@ -15,7 +15,11 @@ def run_train(max_epochs: int, save_dir: Path, debug: bool, accelerator: Optiona
     if accelerator is None:
         accelerator = "auto"
     trainer = L.Trainer(
-        max_epochs=max_epochs, accelerator=accelerator, logger=True, default_root_dir=save_dir
+        max_epochs=max_epochs,
+        accelerator=accelerator,
+        logger=True,
+        default_root_dir=save_dir,
+        enable_checkpointing=True,
     )
     trainer.fit(
         resnet_module,

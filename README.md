@@ -1,4 +1,6 @@
 
+Task based on modified cats vs dogs challenge from: https://github.com/harrison-ai/hai-tech-tasks/blob/develop/cats_and_dogs.md
+
 To establish a baseline a ResNet18 model is used for breed classification with the outputs of this model used to differentiate between cat and dog. 
 
 
