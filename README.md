@@ -6,11 +6,9 @@ To establish a baseline a ResNet18 model is used for breed classification with t
 
 ## Remaining work
 
-* Write and incorporate performance metrics into training and validation steps.
-  * Add steps for combining breed classification predictions for cat vs dog classification.
 * Add segmentation model training, performance evaluation and inference code.
   * Was going to use [lraspp_mobilenet_v3_large](https://pytorch.org/vision/stable/models/generated/torchvision.models.segmentation.lraspp_mobilenet_v3_large.html#torchvision.models.segmentation.LRASPP_MobileNet_V3_Large_Weights) as a starting point. 
-* Write network inference code with an Interface, and abstraction from the two models used, from the users perspective there is not difference between one or two models.
+* Modify inference code to work with segmentation, likely to create a master inference module which runs both models.
 
 
 
