@@ -16,7 +16,9 @@ def get_model_path() -> Path:
 def test_inference_constructor():
     classifier = ClassificationInference(get_model_path())
 
-def test_validation_set():
+# test multiple thresholds to ensure prediction classes can handle cases with no predictions or more than two.
+@pytest.mark.parametrize("thresholds", [0.01, 0.5, 0.99])
+def test_validation_set(thresholds):
     val_fn = dataset_info_filename.parent / "tiny_validation.csv"
     if not val_fn.is_file():
         splitter = CreateDataSplits(dataset_info_filename, dataset_info_filename.parent)
@@ -24,7 +26,7 @@ def test_validation_set():
 
     val_df = pd.read_csv(val_fn)
 
-    classifer = ClassificationInference(get_model_path(), prediction_threshold=0.1)
+    classifer = ClassificationInference(get_model_path(), prediction_threshold=thresholds)
 
     for _, row in val_df.iterrows():
         image_path = dataset_info_filename.parent / 'data' / row.Sample_ID / "image.jpg"
