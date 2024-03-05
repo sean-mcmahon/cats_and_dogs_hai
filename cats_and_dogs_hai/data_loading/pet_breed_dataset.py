@@ -9,6 +9,7 @@ from torchvision.io import read_image
 import torch
 
 from cats_and_dogs_hai.labels import pet_breeds_to_id
+from cats_and_dogs_hai.data_loading.load_image import load_image
 
 
 class PetBreedsDataset(Dataset):
@@ -31,7 +32,7 @@ class PetBreedsDataset(Dataset):
         breed_names: list[str] = ast.literal_eval(datum_row.Breed)
         breed_ids = [pet_breeds_to_id[n] for n in breed_names]
         image_path = self.images_directory / datum_id / "image.jpg"
-        image = read_image(str(image_path))
+        image = load_image(image_path)
         if self.transforms is not None:
             image = self.transforms(image)
 

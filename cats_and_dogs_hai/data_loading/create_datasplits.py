@@ -23,9 +23,12 @@ class CreateDataSplits():
         self.val_df = df.drop(self.train_df.index)
 
 
-    def create_tiny_db(self, dataset_size:int):
+    def create_tiny_db(self, dataset_size:int) -> Tuple[Path, Path]:
         fraction = dataset_size / self.full_data_df.shape[0]
         dataset_subset = self.full_data_df.sample(frac=fraction, random_state=42)
         self.__create_df_splits(dataset_subset, 0.8)
-        self.train_df.to_csv(self.save_dir / "tiny_train.csv", index=False)
-        self.val_df.to_csv(self.save_dir / "tiny_validation.csv", index=False)
+        train_fn = self.save_dir / "tiny_train.csv"
+        val_fn = self.save_dir / "tiny_validation.csv"
+        self.train_df.to_csv(train_fn, index=False)
+        self.val_df.to_csv(val_fn, index=False)
+        return train_fn, val_fn
