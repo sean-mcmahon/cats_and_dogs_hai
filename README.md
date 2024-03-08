@@ -9,6 +9,9 @@ To establish a baseline a ResNet18 model is used for breed classification with t
 * Add segmentation model training, performance evaluation and inference code.
   * Was going to use [lraspp_mobilenet_v3_large](https://pytorch.org/vision/stable/models/generated/torchvision.models.segmentation.lraspp_mobilenet_v3_large.html#torchvision.models.segmentation.LRASPP_MobileNet_V3_Large_Weights) as a starting point. 
 * Modify inference code to work with segmentation, likely to create a master inference module which runs both models.
+* Implement inference with REST API to integrate your predictive model into a backend system.
+* How to infer for more than 2 breeds per image
+* Plan how to scale up to 8000 cases per second.
 
 
 
