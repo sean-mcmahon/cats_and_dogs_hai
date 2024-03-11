@@ -11,7 +11,7 @@ def classification_main():
 
 def segmentation_main():
     parent_dir = Path("debug_runs")
-    sdir=  parent_dir / 'classification'
+    sdir=  parent_dir / 'segmentation'
     sdir.mkdir(exist_ok=True, parents=True)
     run_segmentation_train(max_epochs=2, save_dir=sdir, debug=True, accelerator="cpu")
 
