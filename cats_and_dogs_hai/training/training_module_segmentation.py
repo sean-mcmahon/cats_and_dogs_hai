@@ -24,7 +24,8 @@ class SegmentationTrainModule(L.LightningModule):
 
     def validation_step(self, batch, batch_idx):
         x, y = batch
-        predictions = self.model(x)
+        output = self.model(x)
+        predictions = output["out"]
         loss = self.criterion(predictions, y)
         self.log("val_loss", loss)
         self.f1_score_val.update(predictions, y)
@@ -40,7 +41,8 @@ class SegmentationTrainModule(L.LightningModule):
 
     def training_step(self, batch, batch_idx):
         x, y = batch
-        predictions = self.model(x)
+        output = self.model(x)
+        predictions = output["out"]
         loss = self.criterion(predictions, y)
 
         self.log("train_loss", loss)

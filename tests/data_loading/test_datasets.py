@@ -78,13 +78,19 @@ def test_pet_mask_dataset_label():
     dataset = PetMaskDataset(dataset_images_directory, dataset_info_filename)
     idx = 10
     dataDF = pd.read_csv(dataset_info_filename)
-    expected_label = plt.imread(dataset_images_directory / dataDF.iloc[idx].Sample_ID / "mask.jpg")
+    expected_label = dataset.convert_to_binary_mask(
+        plt.imread(dataset_images_directory / dataDF.iloc[idx].Sample_ID / "mask.jpg")
+    )
+    expected_image = plt.imread(dataset_images_directory / dataDF.iloc[idx].Sample_ID / "image.jpg")
 
     datum = dataset[idx]
 
     result_label = np.squeeze(datum[1].numpy().transpose(1, 2, 0))
+    result_image = np.squeeze(datum[0].numpy().transpose(1, 2, 0))
     # plot_images(result_label, expected_label)
+    assert np.unique(result_label).shape[0] == 2
     assert np.array_equal(result_label, expected_label)
+    assert np.array_equal(result_image, expected_image)
 
 
 def test_pet_breed_dataset_transform_getitem():

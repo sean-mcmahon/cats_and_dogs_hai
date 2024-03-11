@@ -17,9 +17,13 @@ class PetMaskDataset(PetDatasetBase):
             image, label = self.transforms(image, label)
         return image, label
 
+    def convert_to_binary_mask(self, mask:torch.Tensor) -> torch.Tensor:
+        return (mask / 255) > 0.9
+
     def _load_label(self, database_row: pd.DataFrame):
         mask_path = self.images_directory / database_row.Sample_ID / "mask.jpg"
         mask = load_image(mask_path)
+        mask = self.convert_to_binary_mask(mask).float()
 
-        mask_tv_tensor = tv_tensors.Mask(mask, requires_grad=False)
+        mask_tv_tensor = tv_tensors.Mask(mask, requires_grad=False).float()
         return mask_tv_tensor
