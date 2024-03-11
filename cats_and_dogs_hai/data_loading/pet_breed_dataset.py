@@ -9,7 +9,9 @@ from cats_and_dogs_hai.labels import pet_breeds_to_id
 
 
 class PetBreedsDataset(PetDatasetBase):
-    def _apply_transform(self, image:torch.Tensor, label:torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+    def _apply_transform(
+        self, image: torch.Tensor, label: torch.Tensor
+    ) -> Tuple[torch.Tensor, torch.Tensor]:
         if self.transforms:
             image = self.transforms(image)
         return image, label

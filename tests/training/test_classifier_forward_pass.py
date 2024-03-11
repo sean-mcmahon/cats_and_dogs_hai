@@ -1,4 +1,3 @@
-
 from cats_and_dogs_hai.labels import pet_breeds_to_id
 from cats_and_dogs_hai.data_loading.create_dataloaders import create_classification_dataloaders
 from cats_and_dogs_hai.training.training_module_classification import ClassificationTrainModule
@@ -15,6 +14,7 @@ def test_train_forward_pass():
     output = model(image)
 
     assert output.shape == label.shape == (1, number_of_classes)
+
 
 def test_val_forward_pass():
     number_of_classes = len(pet_breeds_to_id)

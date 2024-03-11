@@ -34,8 +34,8 @@ class SegmentationTrainModule(L.LightningModule):
     def on_validation_epoch_end(self):
         f1_score = self.f1_score_val.compute()
         iou = self.iou_val.compute()
-        self.log('val_f1_score', f1_score)
-        self.log('val_iou', iou)
+        self.log("val_f1_score", f1_score)
+        self.log("val_iou", iou)
         self.iou_val.reset()
 
     def training_step(self, batch, batch_idx):

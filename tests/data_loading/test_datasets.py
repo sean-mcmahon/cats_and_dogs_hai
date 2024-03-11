@@ -42,6 +42,7 @@ def test_pet_dataset_len(test_dataset_cls):
     dataDF = pd.read_csv(dataset_info_filename)
     assert len(dataset) == dataDF.shape[0]
 
+
 @pytest.mark.parametrize(
     "test_dataset_cls",
     [PetBreedsDataset, PetMaskDataset],
@@ -72,6 +73,7 @@ def test_pet_breed_dataset_label():
 
     assert sudo_onehot_to_labels(datum[1].numpy()) == expected_label
 
+
 def test_pet_mask_dataset_label():
     dataset = PetMaskDataset(dataset_images_directory, dataset_info_filename)
     idx = 10
@@ -84,9 +86,12 @@ def test_pet_mask_dataset_label():
     # plot_images(result_label, expected_label)
     assert np.array_equal(result_label, expected_label)
 
+
 def test_pet_breed_dataset_transform_getitem():
     dataset = PetBreedsDataset(
-        dataset_images_directory, dataset_info_filename, transforms=image_classification_training_transforms
+        dataset_images_directory,
+        dataset_info_filename,
+        transforms=image_classification_training_transforms,
     )
     idx = 6494
     dataDF = pd.read_csv(dataset_info_filename)
@@ -99,10 +104,13 @@ def test_pet_breed_dataset_transform_getitem():
     assert result_image.shape == expected_image.shape
     assert sudo_onehot_to_labels(datum[1].numpy()) == expected_label
 
+
 def test_pet_mask_dataset_transform_getitem():
 
     dataset = PetMaskDataset(
-        dataset_images_directory, dataset_info_filename, transforms=image_segmentation_training_transforms
+        dataset_images_directory,
+        dataset_info_filename,
+        transforms=image_segmentation_training_transforms,
     )
     idx = 6494
     dataDF = pd.read_csv(dataset_info_filename)
