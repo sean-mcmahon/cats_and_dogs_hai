@@ -17,7 +17,7 @@ class PetMaskDataset(PetDatasetBase):
             image, label = self.transforms(image, label)
         return image, label
 
-    def convert_to_binary_mask(self, mask:torch.Tensor) -> torch.Tensor:
+    def convert_to_binary_mask(self, mask: torch.Tensor) -> torch.Tensor:
         return (mask / 255) > 0.9
 
     def _load_label(self, database_row: pd.DataFrame):

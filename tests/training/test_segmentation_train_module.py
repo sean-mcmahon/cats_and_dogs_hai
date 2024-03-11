@@ -38,6 +38,7 @@ def test_train_step():
 
     loss = segmentation_module.training_step((image, label), 0)
 
+
 def test_val_step():
 
     segmentation_module = SegmentationTrainModule()

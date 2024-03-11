@@ -28,6 +28,7 @@ def test_val_forward_pass():
 
     assert output.shape == label.shape == (1, number_of_classes)
 
+
 def test_train_step():
     number_of_classes = len(pet_breeds_to_id)
     resnet_module = ClassificationTrainModule(number_classes=number_of_classes)
@@ -36,6 +37,7 @@ def test_train_step():
     image, label = next(iter(train_dls.val_dl))
 
     loss = resnet_module.training_step((image, label), 0)
+
 
 def test_val_step():
     number_of_classes = len(pet_breeds_to_id)

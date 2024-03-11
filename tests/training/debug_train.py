@@ -17,9 +17,9 @@ def segmentation_main():
 
 
 if __name__ == "__main__":
-    # print('------\n')
-    # print('Running Classification')
-    # classification_main()
+    print('------\n')
+    print('Running Classification')
+    classification_main()
 
     print('\n------\n')
     print('Running Segmentation')
