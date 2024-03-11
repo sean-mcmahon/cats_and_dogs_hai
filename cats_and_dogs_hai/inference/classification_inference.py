@@ -8,7 +8,7 @@ from torchvision.transforms import v2
 
 from cats_and_dogs_hai.models.classification_model import create_classification_model
 from cats_and_dogs_hai.labels.pet_classes import number_pet_breed_classes
-from cats_and_dogs_hai.data_loading.data_transforms import resnet_preprocessing_transforms
+from cats_and_dogs_hai.data_loading.data_transforms import classification_preprocessing_transforms
 from cats_and_dogs_hai.inference.pet_breed_prediction import PetBreedPrediction
 from cats_and_dogs_hai.inference.pet_species_prediction import PetSpeciesPrediction
 
@@ -25,7 +25,7 @@ class ClassificationInference:
         if number_of_classes is None:
             number_of_classes = number_pet_breed_classes
         if preprocess_transforms is None:
-            self.preprocess_transforms = resnet_preprocessing_transforms
+            self.preprocess_transforms = classification_preprocessing_transforms
 
         self.threshold = prediction_threshold
         self.number_of_classes = number_of_classes

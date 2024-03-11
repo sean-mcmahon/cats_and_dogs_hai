@@ -7,8 +7,8 @@ from torchmetrics.classification import BinaryJaccardIndex
 from cats_and_dogs_hai.models.segmentation_model import create_segmentation_model
 
 
-class ResnetModule(L.LightningModule):
-    def __init__(self, number_classes: int, learning_rate: float = 1e-4):
+class SegmentationTrainModule(L.LightningModule):
+    def __init__(self, learning_rate: float = 1e-4):
         self.learning_rate = learning_rate
         super().__init__()
 

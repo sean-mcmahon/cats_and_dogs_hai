@@ -5,7 +5,7 @@ from torchmetrics.classification import MultilabelF1Score
 from cats_and_dogs_hai.models.classification_model import create_classification_model
 
 
-class ResnetModule(L.LightningModule):
+class ClassificationTrainModule(L.LightningModule):
 
     def __init__(self, number_classes: int, learning_rate: float = 1e-3):
         self.learning_rate = learning_rate
