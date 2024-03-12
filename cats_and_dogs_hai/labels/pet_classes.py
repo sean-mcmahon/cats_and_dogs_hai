@@ -12,16 +12,16 @@ for names_enum in [cat_breed_names, dog_breed_names]:
         index += 1
 pet_ids_to_breed: Dict[int, str] = {value: key for key, value in pet_breeds_to_id.items()}
 
-number_pet_breed_classes:int = len(pet_breeds_to_id)
+number_pet_breed_classes: int = len(pet_breeds_to_id)
 
 
-class SpeciesIds(IntEnum):
+class PetSpeciesIds(IntEnum):
     Cat = 0
     Dog = 1
 
 
-pet_breed_to_species_id: Dict[str, int] = {}
+pet_breed_id_to_species_id: Dict[int, int] = {}
 for catbreed in cat_breed_names:
-    pet_breed_to_species_id[catbreed] = SpeciesIds.Cat
+    pet_breed_id_to_species_id[pet_breeds_to_id[catbreed]] = PetSpeciesIds.Cat
 for dogbreed in dog_breed_names:
-    pet_breed_to_species_id[dogbreed] = SpeciesIds.Dog
+    pet_breed_id_to_species_id[pet_breeds_to_id[dogbreed]] = PetSpeciesIds.Dog

@@ -9,7 +9,7 @@ from cats_and_dogs_hai.data_loading.load_image import load_image
 from cats_and_dogs_hai.inference.classification_inference import ClassificationInference
 
 def get_model_path() -> Path:
-    model_path = Path('tests/test_data/epoch=1-step=16.ckpt')
+    model_path = Path('tests/test_data/classification_resnet_epoch=1-step=16.ckpt')
     assert model_path.is_file()
     return model_path
 
