@@ -15,13 +15,15 @@ class PetSpeciesPrediction(ClassificationPredictionBase):
         self,
         logits: Tensor,
         class_id_lookup: Optional[dict[int, int]] = None,
-        # pet_species_ids: Optional[IntEnum] = None,
+        pet_species_ids: Optional[IntEnum] = None,
     ):
         self._logits = logits
         self.pet_species_lookup = (
             pet_breed_id_to_species_id if class_id_lookup is None else class_id_lookup
         )
-        # self.pet_species_ids = PetSpeciesIds if pet_species_ids is None else pet_species_ids
+        self.pet_species_ids: IntEnum = (
+            PetSpeciesIds if pet_species_ids is None else pet_species_ids # type: ignore
+        )
 
         self.__predictions: list[int] = self._logits.nonzero().squeeze().tolist()
 
@@ -31,4 +33,4 @@ class PetSpeciesPrediction(ClassificationPredictionBase):
 
     @property
     def names(self) -> list[str]:
-        return [str(self.pet_species_lookup[i].name) for i in self.integer]
+        return [str(self.pet_species_ids(i).name) for i in self.integer]  # mypy: ignore
