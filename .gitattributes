@@ -1,1 +1,2 @@
-tests/test_data/epoch=1-step=16.ckpt filter=lfs diff=lfs merge=lfs -text
+tests/test_data/*.ckpt filter=lfs diff=lfs merge=lfs -text
+*.ckpt filter=lfs diff=lfs merge=lfs -text

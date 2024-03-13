@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import torch
 
 from cats_and_dogs_hai.models.classification_model import create_classification_model
@@ -9,7 +11,7 @@ def test_create_without_checkpoint():
     assert model.fc.out_features == number_pet_breed_classes
 
 def test_create_with_checkpoint():
-    model_path = 'tests/test_data/epoch=1-step=16.ckpt'
+    model_path = Path('tests/test_data/classification_resnet_epoch=1-step=16.ckpt')
     model = create_classification_model(number_pet_breed_classes, weights_path=model_path)
     assert isinstance(model, torch.nn.Module)
     assert model.fc.out_features == number_pet_breed_classes

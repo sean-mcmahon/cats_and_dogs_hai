@@ -2,14 +2,15 @@
 Task based on modified cats vs dogs challenge from: https://github.com/harrison-ai/hai-tech-tasks/blob/develop/cats_and_dogs.md
 
 To establish a baseline a ResNet18 model is used for breed classification with the outputs of this model used to differentiate between cat and dog. 
+For the mask prediction a version of EfficientNet is used.
+
+Classification and segmentation are performed and trained separately to establish a baseline. The combined inference is one call though so in future if these two models are combined the inference calls made externally do not change.
 
 
 ## Remaining work
 
-* Add segmentation model training, performance evaluation and inference code.
-  * Was going to use [lraspp_mobilenet_v3_large](https://pytorch.org/vision/stable/models/generated/torchvision.models.segmentation.lraspp_mobilenet_v3_large.html#torchvision.models.segmentation.LRASPP_MobileNet_V3_Large_Weights) as a starting point. 
-* Modify inference code to work with segmentation, likely to create a master inference module which runs both models.
-
+* Implement inference with REST API to integrate your predictive model into a backend system.
+* Plan how to scale up to 8000 cases per second.
 
 
 ## Installation and Setup
