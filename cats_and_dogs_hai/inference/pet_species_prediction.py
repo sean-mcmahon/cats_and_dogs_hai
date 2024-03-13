@@ -22,7 +22,7 @@ class PetSpeciesPrediction(ClassificationPredictionBase):
             pet_breed_id_to_species_id if class_id_lookup is None else class_id_lookup
         )
         self.pet_species_ids: IntEnum = (
-            PetSpeciesIds if pet_species_ids is None else pet_species_ids # type: ignore
+            PetSpeciesIds if pet_species_ids is None else pet_species_ids  # type: ignore
         )
 
         self.__predictions: list[int] = self._logits.nonzero().squeeze().tolist()
@@ -33,4 +33,4 @@ class PetSpeciesPrediction(ClassificationPredictionBase):
 
     @property
     def names(self) -> list[str]:
-        return [str(self.pet_species_ids(i).name) for i in self.integer]  # mypy: ignore
+        return [str(self.pet_species_ids(i).name) for i in self.integer]  # type: ignore

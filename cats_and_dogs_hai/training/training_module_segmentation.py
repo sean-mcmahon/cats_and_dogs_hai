@@ -13,7 +13,7 @@ class SegmentationTrainModule(L.LightningModule):
         super().__init__()
 
         self.model = create_segmentation_model(weights_path=None)
-        self.criterion = torch.nn.CrossEntropyLoss()
+        self.criterion = torch.nn.BCEWithLogitsLoss()
 
         self.f1_score_val = BinaryF1Score(threshold=0.5)
         self.iou_val = BinaryJaccardIndex(threshold=0.5)

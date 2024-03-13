@@ -15,7 +15,7 @@ class PetBreedPrediction(ClassificationPredictionBase):
 
         self.__predictions: list[int] = self._logits.nonzero().squeeze().tolist()
 
-    def _check_logits(self, logits:torch.Tensor):
+    def _check_logits(self, logits: torch.Tensor):
         unique = torch.unique(logits, sorted=True)
         if not torch.any(unique == 1) or torch.any(unique == 0):
             raise ValueError(f"Logits should only contain 0 and 1:\n{logits.tolist()}")
@@ -29,4 +29,4 @@ class PetBreedPrediction(ClassificationPredictionBase):
         return self.__predictions
 
     def __str__(self):
-        return '{} has classes\n{}'.format(self.__class__, self.names)
+        return "{} has classes\n{}".format(self.__class__, self.names)

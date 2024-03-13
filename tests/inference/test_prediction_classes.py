@@ -94,4 +94,4 @@ def test_prediction_class_string(
     assert all(
         pred_name == expected_name
         for pred_name, expected_name in zip(list_of_outputs, expected_names)
-    ), f'Names mismatch, expected:\n{expected_names}\nPredicted:\n{list_of_outputs}'
+    ), f"Names mismatch, expected:\n{expected_names}\nPredicted:\n{list_of_outputs}"
